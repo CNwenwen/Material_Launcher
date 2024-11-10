@@ -1,0 +1,43 @@
+﻿<Page x:Class="WpfApp15.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WpfApp15"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      Title="StartPage" Height="350" Width="680">
+    <Grid>
+        <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <TextBox Name="NameBox" materialDesign:HintAssist.Hint="你的名字..." Width="200" TextChanged="NameBox_OnTextChanged"></TextBox>
+            <ComboBox materialDesign:HintAssist.Hint="选择Java" Name="JavaBox" DisplayMemberPath="Name" SelectedValuePath="Path" SelectionChanged="Selector_OnSelectionChanged" Width="200"/>
+            <ComboBox materialDesign:HintAssist.Hint="选择游戏核心" Name="CoreBox" DisplayMemberPath="Id" SelectedValuePath="Id" SelectionChanged="Selector_OnSelectionChanged" Width="200"/>
+            <Button Click="StartButton_OnClick" Name="StartButton" IsEnabled="False" Width="200">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="启动"></TextBlock>
+                    <materialDesign:PackIcon Kind="RocketLaunchOutline"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <materialDesign:Snackbar
+            x:Name="SnackbarOne"
+            IsActive="False"
+            Message="启动成功，等待游戏窗口出现"
+        />
+        <materialDesign:Card
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="16"
+            Width="30"
+            Height="30"
+            Padding="4"
+            UniformCornerRadius="14"
+        >
+            <ProgressBar
+                Name="ProgressBar"
+                Style="{StaticResource MaterialDesignCircularProgressBar}"
+                Value="0"
+            />
+        </materialDesign:Card>
+    </Grid>
+</Page>
